@@ -1,0 +1,22 @@
+[
+    {
+        "caretX": 2,
+        "caretY": 5,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/main.cpp",
+        "focused": false,
+        "isOpen": true,
+        "left": 0,
+        "order": 1,
+        "top": 0
+    },
+    {
+        "caretX": 21,
+        "caretY": 6,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/includes.h",
+        "focused": true,
+        "isOpen": true,
+        "left": 0,
+        "order": 0,
+        "top": 0
+    }
+]
