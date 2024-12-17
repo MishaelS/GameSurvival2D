@@ -1,65 +1,47 @@
 #include "includes.h"
+#include "camera_controller.h"
+#include "entity.h"
 
 int main(int argc, char** argv) {
 	
 	InitWindow(ScreenWidth, ScreenHeight, "Mini-Step");
 	SetTargetFPS(60);
+	SetWindowState(FLAG_VSYNC_HINT);
 	
-	const float cameraDeadZone = 50.f;
-	const float cameraSmoothness = 12.f;
+	Vector2 playerPosition = {WorldWidth / 2.f, WorldHeight / 2.f};
+	Texture2D playerTexture = LoadTexture("assets/Characters/Basic_Charakter_Spritesheet2.png");
 	
-	const int gridSize = 32;
-	Vector2 playerPosition = {0.f, 0.f};
-	Texture2D playerTexture = LoadTexture("default.png");
+	Entity player(playerPosition, playerTexture, 48, 48, 300.f);
 	
-	Camera2D camera = {0};
-	Vector2 cameraTarget = {playerPosition.x, playerPosition.y};
-	camera.target.x += (cameraTarget.x - camera.target.x) / cameraSmoothness;
-	camera.target.y += (cameraTarget.y - camera.target.y) / cameraSmoothness;
-	camera.offset = {ScreenWidth / 2.f, ScreenHeight / 2.f};
-	camera.rotation = 0.f;
-	camera.zoom = 1.f;
+	Vector2 centerScreen = {ScreenWidth / 2.f, ScreenHeight / 2.f};
+	CameraController camera(playerPosition, centerScreen, CameraDeadZone, CameraSmoothness);
 	
 	while (!WindowShouldClose()) {
-		if (IsKeyDown(KEY_A)) { playerPosition.x -= 200.f * GetFrameTime(); }
-		if (IsKeyDown(KEY_W)) { playerPosition.y -= 200.f * GetFrameTime(); }
-		if (IsKeyDown(KEY_D)) { playerPosition.x += 200.f * GetFrameTime(); }
-		if (IsKeyDown(KEY_S)) { playerPosition.y += 200.f * GetFrameTime(); }
+		player.direction = {0.f, 0.f};
+		if (IsKeyDown(KEY_A)) { player.direction.x = -1; }
+		if (IsKeyDown(KEY_W)) { player.direction.y = -1; }
+		if (IsKeyDown(KEY_D)) { player.direction.x =  1; }
+		if (IsKeyDown(KEY_S)) { player.direction.y =  1; }
 		
-		if (playerPosition.x < cameraTarget.x - cameraDeadZone) {
-			cameraTarget.x = playerPosition.x + cameraDeadZone;
-		} else if (playerPosition.x > cameraTarget.x + cameraDeadZone) {
-			cameraTarget.x = playerPosition.x - cameraDeadZone;
-		}
+		camera.setPosition(player.getPosition());
+		camera.update();
 		
-		if (playerPosition.y < cameraTarget.y - cameraDeadZone) {
-			cameraTarget.y = playerPosition.y + cameraDeadZone;
-		} else if (playerPosition.y > cameraTarget.y + cameraDeadZone) {
-			cameraTarget.y = playerPosition.y - cameraDeadZone;
-		}
-		
-		camera.target.x += (cameraTarget.x - camera.target.x) / cameraSmoothness;
-		camera.target.y += (cameraTarget.y - camera.target.y) / cameraSmoothness;
+		player.update(GetFrameTime());
 		
 		BeginDrawing();
 			ClearBackground({25, 25, 25, 255});
 			
-			BeginMode2D(camera);
-				for (int x = 0; x < 128 * gridSize; x += gridSize) {
-					DrawLine(x, 0, x, 128 * gridSize, LIGHTGRAY);
-					for (int y = 0; y < 128 * gridSize; y += gridSize) {
-						DrawLine(0, y, 128 * gridSize, y, LIGHTGRAY);
-					}
+			BeginMode2D(camera.getCamera());
+				for (int x = 0; x < 128 * GridSize; x += GridSize) {
+					DrawLine(x, 0, x, 128 * GridSize, {255, 255, 255, 64});
+				}
+				for (int y = 0; y < 128 * GridSize; y += GridSize) {
+					DrawLine(0, y, 128 * GridSize, y, {255, 255, 255, 64});
 				}
 				
-				DrawTexture(playerTexture,
-							playerPosition.x - playerTexture.width  / 2.f,
-							playerPosition.y - playerTexture.height / 2.f,
-							WHITE);
-				
+				player.render();
 			EndMode2D();
-			DrawText("Use arrow keys to move!", 10, 10, 20, WHITE);
-			
+			DrawText(TextFormat("FPS: %d", GetFPS()), 10, 10, 20, WHITE);
 		EndDrawing();
 	}
 	

@@ -7,6 +7,4 @@
 
 #include "constants.h"
 
-
-
 #endif
