@@ -1,5 +1,6 @@
 #include "includes.h"
 #include "camera_controller.h"
+#include "resource_manager.h"
 #include "entity.h"
 
 int main(int argc, char** argv) {
@@ -8,8 +9,11 @@ int main(int argc, char** argv) {
 	SetTargetFPS(60);
 	SetWindowState(FLAG_VSYNC_HINT);
 	
+	ResourceManager resourceManager;
+	resourceManager.loadConfig("config.json");
+	
 	Vector2 playerPosition = {WorldWidth / 2.f, WorldHeight / 2.f};
-	Texture2D playerTexture = LoadTexture("assets/Characters/Basic_Charakter_Spritesheet2.png");
+	Texture2D playerTexture = resourceManager.loadTexture("playerSpriteSheet");
 	
 	Entity player(playerPosition, playerTexture, 48, 48, 300.f);
 	
@@ -45,7 +49,7 @@ int main(int argc, char** argv) {
 		EndDrawing();
 	}
 	
-	UnloadTexture(playerTexture);
+	resourceManager.unloadAllResources();
 	CloseWindow();
 	
 	return 0;

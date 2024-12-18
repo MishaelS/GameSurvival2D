@@ -1,7 +1,7 @@
 [Project]
 filename = source.dev
 name = source
-UnitCount = 7
+UnitCount = 9
 Type = 1
 Ver = 3
 Includes = 
@@ -44,7 +44,7 @@ UseUTF8 = 1
 
 
 [Unit1]
-FileName = camera_controller.h
+FileName = resource_manager.h
 CompileCpp = 0
 Folder = Headers
 Compile = 0
@@ -53,7 +53,7 @@ Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 
 FileEncoding = PROJECT
-RealEncoding = UTF-8
+RealEncoding = ASCII
 
 
 [VersionInfo]
@@ -77,7 +77,7 @@ SyncProduct = 1
 
 
 [Unit2]
-FileName = entity.cpp
+FileName = camera_controller.cpp
 CompileCpp = 1
 Folder = Sources
 Compile = 1
@@ -103,7 +103,7 @@ RealEncoding = ASCII
 
 
 [Unit4]
-FileName = entity.h
+FileName = camera_controller.h
 CompileCpp = 0
 Folder = Headers
 Compile = 0
@@ -112,11 +112,11 @@ Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 
 FileEncoding = PROJECT
-RealEncoding = ASCII
+RealEncoding = UTF-8
 
 
 [Unit5]
-FileName = camera_controller.cpp
+FileName = entity.cpp
 CompileCpp = 1
 Folder = Sources
 Compile = 1
@@ -129,7 +129,7 @@ RealEncoding = ASCII
 
 
 [Unit6]
-FileName = includes.h
+FileName = constants.h
 CompileCpp = 0
 Folder = Headers
 Compile = 0
@@ -142,7 +142,7 @@ RealEncoding = ASCII
 
 
 [Unit7]
-FileName = constants.h
+FileName = includes.h
 CompileCpp = 0
 Folder = Headers
 Compile = 0
@@ -152,6 +152,32 @@ OverrideBuildCmd = 0
 BuildCmd = 
 FileEncoding = PROJECT
 RealEncoding = ASCII
+
+
+[Unit8]
+FileName = resource_manager.cpp
+CompileCpp = 1
+Folder = Sources
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+FileEncoding = PROJECT
+RealEncoding = ASCII
+
+
+[Unit9]
+FileName = entity.h
+CompileCpp = 0
+Folder = Headers
+Compile = 0
+Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+FileEncoding = PROJECT
+RealEncoding = UTF-8
 
 
 [CompilerSettings]

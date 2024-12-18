@@ -1,0 +1,11 @@
+{
+    "images": {
+        "chickenSpriteSheet": "assets/Characters/Free_Chicken_Sprites.png",
+        "cowSpriteSheet": "assets/Characters/Free_Cow_Sprites.png",
+        "playerSpriteSheet": "assets/Characters/Basic_Charakter_Spritesheet.png"
+    },
+    "sounds": {
+        "backgroundMusic": "assets/sound",
+        "playerSoundMove": "assets/sound"
+    }
+}

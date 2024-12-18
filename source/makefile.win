@@ -13,10 +13,10 @@ CXXFLAGS = $(CXXINCS) "-g3" "-pipe" "-Wall" "-D_DEBUG"
 CFLAGS   = $(INCS) "-g3" "-pipe" "-Wall" "-D_DEBUG"
 WINDRESFLAGS = 
 RES      = source_private.res
-OBJ      = entity.o main.o camera_controller.o $(RES)
+OBJ      = camera_controller.o main.o entity.o resource_manager.o $(RES)
 BIN      = source.exe
-LINKOBJ  = "entity.o" "main.o" "camera_controller.o" "source_private.res"
-CLEANOBJ = "entity.o" "main.o" "camera_controller.o" "source_private.res" "source.exe"
+LINKOBJ  = "camera_controller.o" "main.o" "entity.o" "resource_manager.o" "source_private.res"
+CLEANOBJ = "camera_controller.o" "main.o" "entity.o" "resource_manager.o" "source_private.res" "source.exe"
 
 .PHONY: all all-before all-after clean clean-custom
 
@@ -29,14 +29,17 @@ source.exe: $(OBJ)
 
 	$(CXX) $(LINKOBJ) -o "source.exe" $(LIBS)
 
-entity.o: entity.cpp entity.h includes.h constants.h
-	$(CXX) -c "entity.cpp" -o "entity.o" $(CXXFLAGS) 
+camera_controller.o: camera_controller.cpp camera_controller.h constants.h includes.h
+	$(CXX) -c "camera_controller.cpp" -o "camera_controller.o" $(CXXFLAGS) 
 
-main.o: main.cpp camera_controller.h entity.h includes.h constants.h
+main.o: main.cpp resource_manager.h camera_controller.h constants.h includes.h entity.h
 	$(CXX) -c "main.cpp" -o "main.o" $(CXXFLAGS) 
 
-camera_controller.o: camera_controller.cpp camera_controller.h includes.h constants.h
-	$(CXX) -c "camera_controller.cpp" -o "camera_controller.o" $(CXXFLAGS) 
+entity.o: entity.cpp constants.h includes.h entity.h
+	$(CXX) -c "entity.cpp" -o "entity.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
+
+resource_manager.o: resource_manager.cpp resource_manager.h constants.h includes.h
+	$(CXX) -c "resource_manager.cpp" -o "resource_manager.o" $(CXXFLAGS) 
 
 source_private.res: source_private.rc 
 	$(WINDRES) -i "source_private.rc" --input-format=rc -o "source_private.res" -O coff $(WINDRESFLAGS) 
