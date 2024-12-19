@@ -3,14 +3,6 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-struct Animation {
-	int frameCount;
-	int currentFrame;
-	float frameDuration;
-	int frameWidth;
-	int frameHeight;
-};
-
 class Entity {
 public:
 	Entity(Vector2 position, Texture2D spriteSheet, int frameWidth, int frameHeight, float movementSpeed = 100.f);
@@ -32,11 +24,11 @@ public:
 	virtual void movement(float deltaTime);
 	virtual void update(float deltaTime);
 	virtual void render();
-	Vector2 direction;
 
 protected:
 	Vector2 position;
 	Vector2 velocity;
+	Vector2 direction;
 	float movementSpeed;
 	
 	Texture2D spriteSheet;

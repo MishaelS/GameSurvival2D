@@ -18,6 +18,18 @@ CameraController::~CameraController() {
 	// destructor		
 }
 
+void CameraController::setZoom(float zoom) {
+	this->camera.zoom = zoom;
+}
+
+void CameraController::setPosition(Vector2 position) {
+	this->position = position;
+}
+
+Camera2D CameraController::getCamera() const {
+	return this->camera;
+}
+
 void CameraController::checkWorldBounds(int worldWidth, int worldHeight) {
 	if (this->camera.target.x < CameraDeadZone) {
 		this->camera.target.x = CameraDeadZone;
@@ -60,17 +72,5 @@ void CameraController::movement() {
 
 void CameraController::update() {
 	this->movement();
-	this->checkWorldBounds(WorldWidth, WorldHeight);
-}
-
-void CameraController::setZoom(float zoom) {
-	this->camera.zoom = zoom;
-}
-
-void CameraController::setPosition(Vector2 position) {
-	this->position = position;
-}
-
-Camera2D CameraController::getCamera() const {
-	return this->camera;
+	this->checkWorldBounds(WorldWidth * TileSize, WorldHeight * TileSize);
 }

@@ -2,8 +2,9 @@
 
 Entity::Entity(Vector2 position, Texture2D spriteSheet, int frameWidth, int frameHeight, float movementSpeed)
 :	position(position),
-	movementSpeed(movementSpeed),
+	velocity({0.f, 0.f}),
 	direction({0.f, 0.f}),
+	movementSpeed(movementSpeed),
 	spriteSheet(spriteSheet),
 	isAlive(true),
 	health(100),
@@ -11,7 +12,7 @@ Entity::Entity(Vector2 position, Texture2D spriteSheet, int frameWidth, int fram
 	animationTimer(0.f),
 	color(WHITE),
 	rotation(0.f),
-	scale(1.f) {
+	scale(TileScale) {
 	
 	this->currentAnimation = {0, 0, 0.1f, frameWidth, frameHeight};
 	this->frameRect = {0, 0, (float)frameWidth, (float)frameHeight};
@@ -86,15 +87,38 @@ void Entity::movement(float deltaTime) {
 }
 
 void Entity::update(float deltaTime) {
+	
+	this->direction = {0.f, 0.f};
+	if (IsKeyDown(KEY_A)) { this->direction.x = -1; }
+	if (IsKeyDown(KEY_W)) { this->direction.y = -1; }
+	if (IsKeyDown(KEY_D)) { this->direction.x =  1; }
+	if (IsKeyDown(KEY_S)) { this->direction.y =  1; }
+	
 	this->movement(deltaTime);
 	this->updateAnimation(deltaTime);
 }
 
 void Entity::render() {
-	DrawTextureRec(
+	DrawTexturePro(
 		this->spriteSheet,
-		this->frameRect,
-		this->position,
+		{this->frameRect.x,
+		 this->frameRect.y,
+		 static_cast<float>(this->currentAnimation.frameWidth),
+		 static_cast<float>(this->currentAnimation.frameHeight)},
+		{this->position.x - this->frameRect.width,
+		 this->position.y - this->frameRect.height,
+		 this->currentAnimation.frameWidth * this->scale,
+		 this->currentAnimation.frameHeight * this->scale},
+		{0.f, 0.f},
+		this->rotation,
 		this->color
+	);
+	
+	DrawRectangle(
+		this->hitbox.x - (this->frameRect.width / 2.f),
+		this->hitbox.y - (this->frameRect.height / 2.f),
+		this->hitbox.width,
+		this->hitbox.height,
+		{255, 255, 255, 25}
 	);
 }

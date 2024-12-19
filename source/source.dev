@@ -1,7 +1,7 @@
 [Project]
 filename = source.dev
 name = source
-UnitCount = 9
+UnitCount = 11
 Type = 1
 Ver = 3
 Includes = 
@@ -44,7 +44,7 @@ UseUTF8 = 1
 
 
 [Unit1]
-FileName = resource_manager.h
+FileName = includes.h
 CompileCpp = 0
 Folder = Headers
 Compile = 0
@@ -53,7 +53,7 @@ Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 
 FileEncoding = PROJECT
-RealEncoding = ASCII
+RealEncoding = UTF-8
 
 
 [VersionInfo]
@@ -77,11 +77,11 @@ SyncProduct = 1
 
 
 [Unit2]
-FileName = camera_controller.cpp
-CompileCpp = 1
-Folder = Sources
-Compile = 1
-Link = 1
+FileName = resource_manager.h
+CompileCpp = 0
+Folder = Headers
+Compile = 0
+Link = 0
 Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 
@@ -90,7 +90,7 @@ RealEncoding = ASCII
 
 
 [Unit3]
-FileName = main.cpp
+FileName = world.cpp
 CompileCpp = 1
 Folder = Sources
 Compile = 1
@@ -103,7 +103,7 @@ RealEncoding = ASCII
 
 
 [Unit4]
-FileName = camera_controller.h
+FileName = entity.h
 CompileCpp = 0
 Folder = Headers
 Compile = 0
@@ -112,11 +112,11 @@ Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 
 FileEncoding = PROJECT
-RealEncoding = UTF-8
+RealEncoding = ASCII
 
 
 [Unit5]
-FileName = entity.cpp
+FileName = camera_controller.cpp
 CompileCpp = 1
 Folder = Sources
 Compile = 1
@@ -129,7 +129,7 @@ RealEncoding = ASCII
 
 
 [Unit6]
-FileName = constants.h
+FileName = world.h
 CompileCpp = 0
 Folder = Headers
 Compile = 0
@@ -138,11 +138,11 @@ Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 
 FileEncoding = PROJECT
-RealEncoding = ASCII
+RealEncoding = UTF-8
 
 
 [Unit7]
-FileName = includes.h
+FileName = camera_controller.h
 CompileCpp = 0
 Folder = Headers
 Compile = 0
@@ -168,7 +168,20 @@ RealEncoding = ASCII
 
 
 [Unit9]
-FileName = entity.h
+FileName = entity.cpp
+CompileCpp = 1
+Folder = Sources
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+FileEncoding = PROJECT
+RealEncoding = ASCII
+
+
+[Unit10]
+FileName = constants.h
 CompileCpp = 0
 Folder = Headers
 Compile = 0
@@ -177,7 +190,20 @@ Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 
 FileEncoding = PROJECT
-RealEncoding = UTF-8
+RealEncoding = ASCII
+
+
+[Unit11]
+FileName = main.cpp
+CompileCpp = 1
+Folder = Sources
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+FileEncoding = PROJECT
+RealEncoding = ASCII
 
 
 [CompilerSettings]
