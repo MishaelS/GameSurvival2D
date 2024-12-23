@@ -22,8 +22,8 @@ void ResourceManager::createDefaultConfig(const std::string& configPath) {
 	};
 	
 	defaultConfig["sounds"] = {
-		{"playerSoundMove", "assets/sound"},
-		{"backgroundMusic", "assets/sound"}
+		{"playerSoundMove", "assets/Sound"},
+		{"backgroundMusic", "assets/Sound"}
 	};
 	
 	std::ofstream configFile(configPath);
