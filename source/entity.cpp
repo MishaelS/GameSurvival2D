@@ -6,119 +6,93 @@ Entity::Entity(Vector2 position, Texture2D spriteSheet, int frameWidth, int fram
 	direction({0.f, 0.f}),
 	movementSpeed(movementSpeed),
 	spriteSheet(spriteSheet),
-	isAlive(true),
-	health(100),
-	maxHealth(100),
 	animationTimer(0.f),
-	color(WHITE),
-	rotation(0.f),
 	scale(TileScale) {
 	
-	this->currentAnimation = {0, 0, 0.1f, frameWidth, frameHeight};
+	this->currAnimation = {IDLE, DOWN, 0, 1, 0, 0.22f};
 	this->frameRect = {0, 0, (float)frameWidth, (float)frameHeight};
-	this->hitbox = {position.x, position.y, (float)frameWidth, (float)frameHeight};
 }
 
 Entity::~Entity() {
 	// destructor
 }
 
-void Entity::setPosition(Vector2 position) {
-	this->position = position;
-}
-
 Vector2 Entity::getPosition() const {
 	return this->position;
 }
 
-Rectangle Entity::getHitbox() const {
-	return this->hitbox;
+void Entity::setPosition(Vector2 position) {
+	this->position = position;
 }
 
-bool Entity::checkCollision(Rectangle other) {
-	return CheckCollisionRecs(this->hitbox, other);
-}
-
-void Entity::handleCollision(Entity* other) {
-	// Handle Collision
-}
-
-void Entity::takeDamage(int damage) {
-	this->health -= damage;
-	if (this->health <= 0) {
-		this->health = 0;
-		this->isAlive = false;
-	}
-}
-
-void Entity::heal(int amount) {
-	this->health += amount;
-	if (this->health > this->maxHealth) {
-		this->health = this->maxHealth;
-	}
-}
-
-void Entity::setAnimation(Animation animation) {
-	this->currentAnimation = animation;
-	this->animationTimer = 0.f;
-	this->frameRect = {0.f, 0.f};
+void Entity::updateState() {
+	// Обновление состояния анимации
+	if (this->direction.x == 0 && this->direction.y == 0) { this->currAnimation.actionState = IDLE; }
+	else { this->currAnimation.actionState = WALKING; }
+	
+	// Обновление направления взгляда
+		 if (this->direction.x > 0) { this->currAnimation.directState = RIGHT; }
+	else if (this->direction.x < 0) { this->currAnimation.directState = LEFT;  }
+	else if (this->direction.y > 0) { this->currAnimation.directState = DOWN;  }
+	else if (this->direction.y < 0) { this->currAnimation.directState = UP;    }
 }
 
 void Entity::updateAnimation(float deltaTime) {
-	if (this->currentAnimation.frameCount > 0) {
-		this->animationTimer += deltaTime;
-		if (this->animationTimer >= this->currentAnimation.frameDuration) {
-			this->animationTimer = 0.f;
-			this->currentAnimation.currentFrame = (this->currentAnimation.currentFrame + 1) % this->currentAnimation.frameCount;
-			this->frameRect.x = this->currentAnimation.currentFrame * this->currentAnimation.frameWidth;
+	// Обновление кадра анимации
+	this->animationTimer += deltaTime;
+	
+	if (this->animationTimer >= this->currAnimation.frameDuration) {
+		this->animationTimer = 0.f;
+		
+		if (this->currAnimation.currentFrame <  this->currAnimation.actionState ||
+			this->currAnimation.currentFrame >= this->currAnimation.actionState + this->currAnimation.frameCount) {
+			this->currAnimation.currentFrame = this->currAnimation.actionState - 1;
 		}
+		
+		this->currAnimation.currentFrame++;
 	}
+	
+	this->frameRect.x = this->currAnimation.currentFrame * this->frameRect.width;
+	this->frameRect.y = this->currAnimation.directState * this->frameRect.height;
 }
 
-void Entity::movement(float deltaTime) {
+void Entity::updateMovement(float deltaTime) {
+	// Обновление позиции
 	this->velocity.x = this->movementSpeed * this->direction.x * deltaTime;
 	this->velocity.y = this->movementSpeed * this->direction.y * deltaTime;
 	
 	this->position.x += this->velocity.x;
 	this->position.y += this->velocity.y;
-	
-	this->hitbox.x = this->position.x;
-	this->hitbox.y = this->position.y;
 }
 
 void Entity::update(float deltaTime) {
-	
-	this->direction = {0.f, 0.f};
-	if (IsKeyDown(KEY_A)) { this->direction.x = -1; }
-	if (IsKeyDown(KEY_W)) { this->direction.y = -1; }
-	if (IsKeyDown(KEY_D)) { this->direction.x =  1; }
-	if (IsKeyDown(KEY_S)) { this->direction.y =  1; }
-	
-	this->movement(deltaTime);
+	this->updateState();
 	this->updateAnimation(deltaTime);
+	this->updateMovement(deltaTime);
 }
 
 void Entity::render() {
+	// Отрисовка текущего кадра анимации
 	DrawTexturePro(
 		this->spriteSheet,
 		{this->frameRect.x,
 		 this->frameRect.y,
-		 static_cast<float>(this->currentAnimation.frameWidth),
-		 static_cast<float>(this->currentAnimation.frameHeight)},
+		 (float)this->frameRect.width,
+		 (float)this->frameRect.height},
 		{this->position.x - this->frameRect.width,
 		 this->position.y - this->frameRect.height,
-		 this->currentAnimation.frameWidth * this->scale,
-		 this->currentAnimation.frameHeight * this->scale},
+		 this->frameRect.width * this->scale,
+		 this->frameRect.height * this->scale},
 		{0.f, 0.f},
-		this->rotation,
-		this->color
+		0.f,
+		WHITE
 	);
 	
-	DrawRectangle(
-		this->hitbox.x - (this->frameRect.width / 2.f),
-		this->hitbox.y - (this->frameRect.height / 2.f),
-		this->hitbox.width,
-		this->hitbox.height,
+	DrawRectangleRec(
+		{this->position.x - this->frameRect.width / 2.f,
+		 this->position.y - this->frameRect.height / 2.f,
+		 this->frameRect.width,
+		 this->frameRect.height},
 		{255, 255, 255, 25}
 	);
 }

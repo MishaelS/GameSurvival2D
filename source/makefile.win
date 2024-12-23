@@ -13,10 +13,10 @@ CXXFLAGS = $(CXXINCS) "-g3" "-pipe" "-Wall" "-D_DEBUG"
 CFLAGS   = $(INCS) "-g3" "-pipe" "-Wall" "-D_DEBUG"
 WINDRESFLAGS = 
 RES      = source_private.res
-OBJ      = world.o camera_controller.o resource_manager.o entity.o main.o $(RES)
+OBJ      = entity.o camera_controller.o world.o resource_manager.o player.o main.o $(RES)
 BIN      = source.exe
-LINKOBJ  = "world.o" "camera_controller.o" "resource_manager.o" "entity.o" "main.o" "source_private.res"
-CLEANOBJ = "world.o" "camera_controller.o" "resource_manager.o" "entity.o" "main.o" "source_private.res" "source.exe"
+LINKOBJ  = "entity.o" "camera_controller.o" "world.o" "resource_manager.o" "player.o" "main.o" "source_private.res"
+CLEANOBJ = "entity.o" "camera_controller.o" "world.o" "resource_manager.o" "player.o" "main.o" "source_private.res" "source.exe"
 
 .PHONY: all all-before all-after clean clean-custom
 
@@ -29,19 +29,22 @@ source.exe: $(OBJ)
 
 	$(CXX) $(LINKOBJ) -o "source.exe" $(LIBS)
 
-world.o: world.cpp includes.h world.h constants.h
-	$(CXX) -c "world.cpp" -o "world.o" $(CXXFLAGS) 
+entity.o: entity.cpp constants.h includes.h entity.h
+	$(CXX) -c "entity.cpp" -o "entity.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
 
-camera_controller.o: camera_controller.cpp includes.h camera_controller.h constants.h
-	$(CXX) -c "camera_controller.cpp" -o "camera_controller.o" $(CXXFLAGS) 
+camera_controller.o: camera_controller.cpp constants.h includes.h camera_controller.h
+	$(CXX) -c "camera_controller.cpp" -o "camera_controller.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
 
-resource_manager.o: resource_manager.cpp includes.h resource_manager.h constants.h
+world.o: world.cpp constants.h world.h includes.h
+	$(CXX) -c "world.cpp" -o "world.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
+
+resource_manager.o: resource_manager.cpp constants.h resource_manager.h includes.h
 	$(CXX) -c "resource_manager.cpp" -o "resource_manager.o" $(CXXFLAGS) 
 
-entity.o: entity.cpp includes.h entity.h constants.h
-	$(CXX) -c "entity.cpp" -o "entity.o" $(CXXFLAGS) 
+player.o: player.cpp constants.h includes.h entity.h player.h
+	$(CXX) -c "player.cpp" -o "player.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
 
-main.o: main.cpp includes.h resource_manager.h entity.h world.h camera_controller.h constants.h
+main.o: main.cpp constants.h resource_manager.h world.h includes.h camera_controller.h entity.h player.h
 	$(CXX) -c "main.cpp" -o "main.o" $(CXXFLAGS) 
 
 source_private.res: source_private.rc 

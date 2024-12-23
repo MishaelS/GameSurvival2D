@@ -1,8 +1,10 @@
 #include "includes.h"
+
 #include "camera_controller.h"
 #include "resource_manager.h"
+
 #include "world.h"
-#include "entity.h"
+#include "player.h"
 
 int main(int argc, char** argv) {
 	
@@ -16,14 +18,17 @@ int main(int argc, char** argv) {
 	World world(WorldWidth, WorldHeight, TileSize);
 	world.generate();
 	
-	Vector2 playerPosition = {(WorldWidth * TileSize) / 2.f, (WorldHeight * TileSize) / 2.f};
+	Vector2 playerPosition = {
+		WorldWidth  * TileSize / 2.f,
+		WorldHeight * TileSize / 2.f
+	};
 	Texture2D playerTexture = resourceManager.loadTexture("playerSpriteSheet");
 	
-	Entity player(playerPosition, playerTexture, 48, 48, 150.f);
+	Player player(playerPosition, playerTexture, 48, 48, 86.f);
 	
 	Vector2 centerScreen = {ScreenWidth / 2.f, ScreenHeight / 2.f};
 	CameraController camera(playerPosition, centerScreen, CameraDeadZone, CameraSmoothness);
-//	camera.setZoom(2.f);
+//	camera.setZoom(0.2f);
 	
 	while (!WindowShouldClose()) {
 		
@@ -33,20 +38,12 @@ int main(int argc, char** argv) {
 		camera.update();
 		
 		BeginDrawing();
-			ClearBackground({25, 25, 25, 255});
+			ClearBackground({0, 149, 182, 255});
 			
 			BeginMode2D(camera.getCamera());
 				world.render(camera.getCamera());
-				
-				for (int x = 0; x < WorldWidth * TileSize; x += TileSize) {
-					DrawLine(x, 0, x, WorldWidth * TileSize, {255, 255, 255, 25});
-				}
-				for (int y = 0; y < WorldHeight * TileSize; y += TileSize) {
-					DrawLine(0, y, WorldHeight * TileSize, y, {255, 255, 255, 25});
-				}
-				
 				player.render();
-				DrawCircle(player.getPosition().x, player.getPosition().y, 4.f, WHITE);
+				DrawCircleV(camera.getCamera().target, 2.f, RED);
 			EndMode2D();
 			DrawText(TextFormat("FPS: %d", GetFPS()), 10, 10, 20, WHITE);
 		EndDrawing();

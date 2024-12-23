@@ -5,27 +5,25 @@
 
 class Entity {
 public:
-	Entity(Vector2 position, Texture2D spriteSheet, int frameWidth, int frameHeight, float movementSpeed = 100.f);
+	Entity(	Vector2 position,
+			Texture2D spriteSheet,
+			int frameWidth,
+			int frameHeight,
+			float movementSpeed = 100.f );
 	virtual ~Entity();
 	
-	void setPosition(Vector2 position);
 	Vector2 getPosition() const;
-	Rectangle getHitbox() const;
+	void setPosition(Vector2 position);
 	
-	bool checkCollision(Rectangle other);
-	void handleCollision(Entity* other);
-	
-	void takeDamage(int damage);
-	void heal(int amount);
-	
-	void setAnimation(Animation animation);
-	void updateAnimation(float deltaTime);
-	
-	virtual void movement(float deltaTime);
 	virtual void update(float deltaTime);
 	virtual void render();
 
 protected:
+	virtual void updateState();	// Методы для управления состоянием
+	virtual void updateAnimation(float deltaTime);
+	virtual void updateMovement(float deltaTime);
+	
+	// Поля для управления состоянием и анимацией
 	Vector2 position;
 	Vector2 velocity;
 	Vector2 direction;
@@ -33,17 +31,10 @@ protected:
 	
 	Texture2D spriteSheet;
 	Rectangle frameRect;
-	Rectangle hitbox;
 	
-	bool isAlive;
-	int health;
-	int maxHealth;
-	
-	Animation currentAnimation;
+	AnimationData currAnimation;
 	float animationTimer;
 	
-	Color color;
-	float rotation;
 	float scale;
 };
 
