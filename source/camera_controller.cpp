@@ -31,16 +31,16 @@ Camera2D CameraController::getCamera() const {
 }
 
 void CameraController::checkWorldBounds(int worldWidth, int worldHeight) {
-	if (this->camera.target.x < CameraDeadZone) {
-		this->camera.target.x = CameraDeadZone;
-	} else if (this->camera.target.x > worldWidth - CameraDeadZone) {
-		this->camera.target.x = worldWidth - CameraDeadZone;
+	if (this->camera.target.x < this->deadZone) {
+		this->camera.target.x = this->deadZone;
+	} else if (this->camera.target.x > worldWidth - this->deadZone) {
+		this->camera.target.x = worldWidth - this->deadZone;
 	}
 	
-	if (this->camera.target.y < CameraDeadZone) {
-		this->camera.target.y = CameraDeadZone;
-	} else if (this->camera.target.y > worldHeight - CameraDeadZone) {
-		this->camera.target.y = worldHeight - CameraDeadZone;
+	if (this->camera.target.y < this->deadZone) {
+		this->camera.target.y = this->deadZone;
+	} else if (this->camera.target.y > worldHeight - this->deadZone) {
+		this->camera.target.y = worldHeight - this->deadZone;
 	}
 }
 
@@ -72,5 +72,5 @@ void CameraController::movement() {
 
 void CameraController::update() {
 	this->movement();
-	this->checkWorldBounds(WorldWidth * TileSize, WorldHeight * TileSize);
+	this->checkWorldBounds(WorldWidth * (TileSize * TileScale), WorldHeight * (TileSize * TileScale));
 }

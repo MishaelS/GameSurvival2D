@@ -5,6 +5,7 @@ Entity::Entity(Vector2 position, Texture2D spriteSheet, int frameWidth, int fram
 	velocity({0.f, 0.f}),
 	direction({0.f, 0.f}),
 	movementSpeed(movementSpeed),
+	isAttack(false),
 	spriteSheet(spriteSheet),
 	animationTimer(0.f),
 	scale(TileScale) {
@@ -27,7 +28,13 @@ void Entity::setPosition(Vector2 position) {
 
 void Entity::updateState() {
 	// Обновление состояния анимации
-	if (this->direction.x == 0 && this->direction.y == 0) { this->currAnimation.actionState = IDLE; }
+	if (this->direction.x == 0 && this->direction.y == 0) {
+		if (isAttack) {
+			this->currAnimation.actionState = ATTACKING;
+		} else {
+			this->currAnimation.actionState = IDLE;
+		}
+	}
 	else { this->currAnimation.actionState = WALKING; }
 	
 	// Обновление направления взгляда
