@@ -13,12 +13,11 @@ public:
 			float movementSpeed = 100.f );
 	virtual ~Player();
 	
+	void management();
 	void update(float deltaTime) override;
 	void render() override;
 
 private:
-	void management();
-	
 	void updateState() override;
 	void updateAnimation(float deltaTime) override;
 	void updateMovement(float deltaTime) override;

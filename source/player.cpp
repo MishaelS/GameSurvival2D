@@ -27,8 +27,10 @@ void Player::management() {
 	// Движение
 	this->direction = {0.f, 0.f};
 	if (IsKeyDown(KEY_SPACE) || IsKeyDown(KEY_X)) {
-		this->currAnimation.actionState = ATTACKING;
+		isAttack = true;
 	} else {
+		isAttack = false;
+
 		if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) { this->direction.x =  1; }
 		if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT) ) { this->direction.x = -1; }
 		if (IsKeyDown(KEY_S) || IsKeyDown(KEY_DOWN) ) { this->direction.y =  1; }
@@ -37,7 +39,6 @@ void Player::management() {
 }
 
 void Player::update(float deltaTime) {
-	this->management();
 	Entity::update(deltaTime);
 }
 

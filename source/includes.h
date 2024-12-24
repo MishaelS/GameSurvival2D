@@ -18,12 +18,12 @@
 
 // Перечисление типо тайлов для растоновки мира
 enum TileType {
-	TILE_EMPTY = 0,	// Пустой тайл
-	TILE_GRASS = 1,	// Трава
-	TILE_SAND  = 3,	// Песок
-	TILE_WATER = 2,	// Вода
-	TILE_TREE  = 4,	// Дерево
-	TILE_ROCK  = 5	// Камень
+	TILE_EMPTY,	// Пустой тайл
+	TILE_GRASS,	// Трава
+	TILE_SAND,	// Песок
+	TILE_WATER,	// Вода
+	TILE_TREE,	// Дерево
+	TILE_ROCK	// Камень
 };
 
 struct Chunk {
@@ -36,13 +36,37 @@ struct Chunk {
 	}
 };
 
+// Структура значений для игрока
+// надо реализовать один общую структуру для всех сущнастей
+// а потом уже перенозначать данные... 
+struct EntityValues {
+	Vector2 position;
+	std::string textureName;
+	int frameWidth;
+	int frameHeight;
+	float moveSpeed;
+};
+
+struct CameraValues {
+	Vector2 position;
+	Vector2 centerScreen;
+	float deadZone;
+	float smoothness;
+};
+
+// ======================================================== //
+// ------------ // Перечисления и структуры // ------------ //
+// .......... для рабыта анимации всех сущносте ........... //
+// ............. радителя и дочерних классов .............. //
+// ======================================================== //
+
 // Состояние направление взгляда сущьности для анимации
 // SpriteSheet направление взгляда сущьности расположенны вертикально
 enum DirectionState {
-	DOWN	= 0,
-	RIGHT	= 1,
-	LEFT	= 2,
-	UP		= 3
+	DOWN,
+	RIGHT,
+	LEFT,
+	UP
 };
 
 // Состояние действия сущьности для анимации
@@ -64,5 +88,9 @@ struct AnimationData {
 	int currentFrame;
 	float frameDuration;
 };
+
+// Объявление переменных с использованием extern
+extern EntityValues PValues;
+extern CameraValues CValues;
 
 #endif

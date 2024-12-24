@@ -29,6 +29,8 @@ protected:
 	Vector2 direction;
 	float movementSpeed;
 	
+	bool isAttack;
+	
 	Texture2D spriteSheet;
 	Rectangle frameRect;
 	
