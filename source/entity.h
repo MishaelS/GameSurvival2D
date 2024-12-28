@@ -1,4 +1,5 @@
-#include "includes.h"
+// #include "includes.h"
+#include "other.h"
 
 #ifndef ENTITY_H
 #define ENTITY_H
@@ -9,7 +10,8 @@ public:
 			Texture2D spriteSheet,
 			int frameWidth,
 			int frameHeight,
-			float movementSpeed = 100.f );
+			float movementSpeed  = 86.f,
+			float animationSpeed = 0.20f);
 	virtual ~Entity();
 	
 	Vector2 getPosition() const;

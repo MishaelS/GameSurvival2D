@@ -5,9 +5,9 @@ EntityValues PValues = {
 	{WorldWidth * (TileSize * TileScale) / 2.f,
 	WorldHeight * (TileSize * TileScale) / 2.f},
 	"playerSpriteSheet",
-	48,
-	48,
-	86.f
+	48, 48,
+	86.f,
+	0.20f
 };
 
 CameraValues CValues = {
@@ -33,7 +33,8 @@ Scene::Scene(int worldW, int worldH, int tileSize, int chunkSize) {
 		resourceManager.loadTexture(PValues.textureName),
 		PValues.frameWidth,
 		PValues.frameHeight,
-		PValues.moveSpeed
+		PValues.moveSpeed,
+		PValues.animSpeed
 	);
 	
 	// Создаем контроллер камеры

@@ -1,7 +1,7 @@
 #include "player.h"
 
-Player::Player(Vector2 position, Texture2D spriteSheet, int frameWidth, int frameHeight, float movementSpeed)
-: Entity(position, spriteSheet, frameWidth, frameHeight, movementSpeed) {
+Player::Player(Vector2 position, Texture2D spriteSheet, int frameWidth, int frameHeight, float movementSpeed, float animationSpeed)
+: Entity(position, spriteSheet, frameWidth, frameHeight, movementSpeed, animationSpeed) {
 	// Конструктор
 }
 

@@ -1,7 +1,7 @@
 [Project]
 filename = source.dev
 name = source
-UnitCount = 15
+UnitCount = 16
 Type = 1
 Ver = 3
 Includes = 
@@ -44,7 +44,7 @@ UseUTF8 = 1
 
 
 [Unit1]
-FileName = main.cpp
+FileName = player.cpp
 CompileCpp = 1
 Folder = Sources
 Compile = 1
@@ -53,7 +53,7 @@ Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 
 FileEncoding = PROJECT
-RealEncoding = ASCII
+RealEncoding = UTF-8
 
 
 [VersionInfo]
@@ -77,58 +77,6 @@ SyncProduct = 1
 
 
 [Unit2]
-FileName = camera_controller.cpp
-CompileCpp = 1
-Folder = Sources
-Compile = 1
-Link = 1
-Priority = 1000
-OverrideBuildCmd = 0
-BuildCmd = 
-FileEncoding = PROJECT
-RealEncoding = UTF-8
-
-
-[Unit3]
-FileName = scene.h
-CompileCpp = 0
-Folder = Headers
-Compile = 0
-Link = 0
-Priority = 1000
-OverrideBuildCmd = 0
-BuildCmd = 
-FileEncoding = PROJECT
-RealEncoding = 
-
-
-[Unit4]
-FileName = player.cpp
-CompileCpp = 1
-Folder = Sources
-Compile = 1
-Link = 1
-Priority = 1000
-OverrideBuildCmd = 0
-BuildCmd = 
-FileEncoding = PROJECT
-RealEncoding = UTF-8
-
-
-[Unit5]
-FileName = world.cpp
-CompileCpp = 1
-Folder = Sources
-Compile = 1
-Link = 1
-Priority = 1000
-OverrideBuildCmd = 0
-BuildCmd = 
-FileEncoding = PROJECT
-RealEncoding = UTF-8
-
-
-[Unit6]
 FileName = camera_controller.h
 CompileCpp = 0
 Folder = Headers
@@ -141,34 +89,21 @@ FileEncoding = PROJECT
 RealEncoding = UTF-8
 
 
-[Unit7]
-FileName = includes.h
-CompileCpp = 0
-Folder = Headers
-Compile = 0
-Link = 0
+[Unit3]
+FileName = resource_manager.cpp
+CompileCpp = 1
+Folder = Sources
+Compile = 1
+Link = 1
 Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 
 FileEncoding = PROJECT
-RealEncoding = UTF-8
+RealEncoding = ASCII
 
 
-[Unit8]
-FileName = constants.h
-CompileCpp = 0
-Folder = Headers
-Compile = 0
-Link = 0
-Priority = 1000
-OverrideBuildCmd = 0
-BuildCmd = 
-FileEncoding = PROJECT
-RealEncoding = UTF-8
-
-
-[Unit9]
-FileName = entity.cpp
+[Unit4]
+FileName = scene.cpp
 CompileCpp = 1
 Folder = Sources
 Compile = 1
@@ -180,7 +115,46 @@ FileEncoding = PROJECT
 RealEncoding = UTF-8
 
 
-[Unit10]
+[Unit5]
+FileName = scene.h
+CompileCpp = 0
+Folder = Headers
+Compile = 0
+Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+FileEncoding = PROJECT
+RealEncoding = UTF-8
+
+
+[Unit6]
+FileName = main.cpp
+CompileCpp = 1
+Folder = Sources
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+FileEncoding = PROJECT
+RealEncoding = UTF-8
+
+
+[Unit7]
+FileName = world.cpp
+CompileCpp = 1
+Folder = Sources
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+FileEncoding = PROJECT
+RealEncoding = UTF-8
+
+
+[Unit8]
 FileName = entity.h
 CompileCpp = 0
 Folder = Headers
@@ -193,7 +167,7 @@ FileEncoding = PROJECT
 RealEncoding = UTF-8
 
 
-[Unit11]
+[Unit9]
 FileName = resource_manager.h
 CompileCpp = 0
 Folder = Headers
@@ -206,8 +180,21 @@ FileEncoding = PROJECT
 RealEncoding = UTF-8
 
 
-[Unit12]
-FileName = world.h
+[Unit10]
+FileName = camera_controller.cpp
+CompileCpp = 1
+Folder = Sources
+Compile = 1
+Link = 1
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+FileEncoding = PROJECT
+RealEncoding = ASCII
+
+
+[Unit11]
+FileName = constants.h
 CompileCpp = 0
 Folder = Headers
 Compile = 0
@@ -219,8 +206,8 @@ FileEncoding = PROJECT
 RealEncoding = UTF-8
 
 
-[Unit13]
-FileName = resource_manager.cpp
+[Unit12]
+FileName = entity.cpp
 CompileCpp = 1
 Folder = Sources
 Compile = 1
@@ -229,7 +216,20 @@ Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 
 FileEncoding = PROJECT
-RealEncoding = ASCII
+RealEncoding = UTF-8
+
+
+[Unit13]
+FileName = world.h
+CompileCpp = 0
+Folder = Headers
+Compile = 0
+Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+FileEncoding = PROJECT
+RealEncoding = UTF-8
 
 
 [Unit14]
@@ -246,16 +246,29 @@ RealEncoding = UTF-8
 
 
 [Unit15]
-FileName = scene.cpp
-CompileCpp = 1
-Folder = Sources
-Compile = 1
-Link = 1
+FileName = includes.h
+CompileCpp = 0
+Folder = Headers
+Compile = 0
+Link = 0
 Priority = 1000
 OverrideBuildCmd = 0
 BuildCmd = 
 FileEncoding = PROJECT
-RealEncoding = 
+RealEncoding = UTF-8
+
+
+[Unit16]
+FileName = other.h
+CompileCpp = 0
+Folder = Headers
+Compile = 0
+Link = 0
+Priority = 1000
+OverrideBuildCmd = 0
+BuildCmd = 
+FileEncoding = PROJECT
+RealEncoding = UTF-8
 
 
 [CompilerSettings]

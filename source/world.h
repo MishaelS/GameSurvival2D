@@ -19,7 +19,6 @@ private:
 	int height;
 	int tileSize;
 	
-	
 	std::vector<std::vector<int>> tilesGrass; // Массив тайлов травы
 	std::vector<std::vector<int>> tilesTrees; // Массив тайлов деревьев
 	Texture2D grassTileset; // Текстура Tileset для травы

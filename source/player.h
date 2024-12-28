@@ -10,7 +10,8 @@ public:
 			Texture2D spriteSheet,
 			int frameWidth,
 			int frameHeight,
-			float movementSpeed = 100.f );
+			float movementSpeed  = 86.f,
+			float animationSpeed = 0.20f );
 	virtual ~Player();
 	
 	void management();

@@ -1,6 +1,6 @@
 #include "entity.h"
 
-Entity::Entity(Vector2 position, Texture2D spriteSheet, int frameWidth, int frameHeight, float movementSpeed)
+Entity::Entity(Vector2 position, Texture2D spriteSheet, int frameWidth, int frameHeight, float movementSpeed, float animationSpeed)
 :	position(position),
 	velocity({0.f, 0.f}),
 	direction({0.f, 0.f}),
@@ -10,7 +10,7 @@ Entity::Entity(Vector2 position, Texture2D spriteSheet, int frameWidth, int fram
 	animationTimer(0.f),
 	scale(TileScale) {
 	
-	this->currAnimation = {IDLE, DOWN, 0, 1, 0, 0.22f};
+	this->currAnimation = {IDLE, DOWN, 0, 1, 0, animationSpeed};
 	this->frameRect = {0, 0, (float)frameWidth, (float)frameHeight};
 }
 
