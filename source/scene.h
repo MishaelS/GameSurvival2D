@@ -6,13 +6,14 @@
 #include "entity.h"
 #include "player.h"
 #include "world.h"
+#include "mob.h"
 
 #ifndef SCENE_H
 #define SCENE_H
 
 class Scene {
 public:
-	Scene(int worldW, int worldH, int tileSize, int chunkSize);
+	Scene();
 	~Scene();
 	
 	void handleInput();				// Обработка ввода
@@ -21,6 +22,11 @@ public:
 
 private:
 	// Методы для управления сущностями
+	void checkCollisionEntity(const std::vector<Entity*>& entities); // Обработка столкновение
+	
+	bool isEntityVisible(Entity* entity, const Camera2D& camera);
+	
+	int countMobs() const;
 	void addEntity(Entity* entity);	 	// Добавление сущности
 	void removeEntity(Entity* entity);	// Удаление сущности
 	
@@ -32,6 +38,7 @@ private:
 	
 	ResourceManager resourceManager;
 	
+	int maxMobs; // Максимальное количество мобов
 };
 
 #endif

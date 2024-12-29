@@ -35,6 +35,15 @@ struct EntityValues {
 	float animSpeed;
 };
 
+struct MobValues {
+	Vector2 position;
+	std::string textureName;
+	int frameWidth;
+	int frameHeight;
+	float moveSpeed;
+	float animSpeed;
+};
+
 struct CameraValues {
 	Vector2 position;
 	Vector2 centerScreen;

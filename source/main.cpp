@@ -6,7 +6,7 @@ int main(int argc, char** argv) {
 	SetTargetFPS(60);
 	SetWindowState(FLAG_VSYNC_HINT);
 	
-	Scene scene(WorldWidth, WorldHeight, TileSize, 16);
+	Scene scene;
 
 	while (!WindowShouldClose()) {
 		scene.handleInput();
