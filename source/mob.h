@@ -14,7 +14,7 @@ public:
 		 float animationSpeed = 0.20f );
 	virtual ~Mob();
 	
-	virtual float getRadius(float ratio = 2.5f) const override;
+	virtual float getRadius() const override;
 	
 	virtual Vector2 getPosition() const override;
 	virtual Vector2 getVelocity() const override;

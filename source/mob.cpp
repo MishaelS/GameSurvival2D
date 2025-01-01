@@ -9,8 +9,8 @@ Mob::~Mob() {
 	// Деструктор
 }
 
-float Mob::getRadius(float ratio) const {
-	return Entity::getRadius(ratio);
+float Mob::getRadius() const {
+	return Entity::getRadius();
 }
 
 Vector2 Mob::getPosition() const {

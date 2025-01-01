@@ -10,11 +10,12 @@ public:
 			Texture2D spriteSheet,
 			int frameWidth,
 			int frameHeight,
-			float movementSpeed  = 86.f,
-			float animationSpeed = 0.20f );
+			float movementSpeed =86.f,
+			float animationSpeed=0.20f );
 	virtual ~Entity();
 	
-	virtual float getRadius(float ratio = 2.5f) const override;
+	virtual float getRadius() const override;
+	virtual float getRadiusHitbox(float ratio=1.f) const;
 	
 	virtual Vector2 getPosition() const override;
 	virtual Vector2 getVelocity() const override;
@@ -28,7 +29,7 @@ public:
 	virtual void render();
 
 protected:
-	virtual Vector2 isCollision(Vector2 position, float radius);
+	virtual void isCollision(Entity* entity);
 	
 	virtual void updateState();	// Методы для управления состоянием
 	virtual void updateAnimation(float deltaTime);

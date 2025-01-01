@@ -13,10 +13,10 @@ CXXFLAGS = $(CXXINCS) "-g3" "-pipe" "-Wall" "-D_DEBUG"
 CFLAGS   = $(INCS) "-g3" "-pipe" "-Wall" "-D_DEBUG"
 WINDRESFLAGS = 
 RES      = source_private.res
-OBJ      = scene.o entity.o player.o main.o resource_manager.o mob.o camera_controller.o game_object.o world.o $(RES)
+OBJ      = entity.o resource_manager.o camera_controller.o game_object.o mob.o level.o main.o scene.o player.o $(RES)
 BIN      = source.exe
-LINKOBJ  = "scene.o" "entity.o" "player.o" "main.o" "resource_manager.o" "mob.o" "camera_controller.o" "game_object.o" "world.o" "source_private.res"
-CLEANOBJ = "scene.o" "entity.o" "player.o" "main.o" "resource_manager.o" "mob.o" "camera_controller.o" "game_object.o" "world.o" "source_private.res" "source.exe"
+LINKOBJ  = "entity.o" "resource_manager.o" "camera_controller.o" "game_object.o" "mob.o" "level.o" "main.o" "scene.o" "player.o" "source_private.res"
+CLEANOBJ = "entity.o" "resource_manager.o" "camera_controller.o" "game_object.o" "mob.o" "level.o" "main.o" "scene.o" "player.o" "source_private.res" "source.exe"
 
 .PHONY: all all-before all-after clean clean-custom
 
@@ -29,32 +29,32 @@ source.exe: $(OBJ)
 
 	$(CXX) $(LINKOBJ) -o "source.exe" $(LIBS)
 
-scene.o: scene.cpp mob.h player.h other.h includes.h camera_controller.h entity.h scene.h world.h resource_manager.h constants.h
-	$(CXX) -c "scene.cpp" -o "scene.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
-
-entity.o: entity.cpp includes.h entity.h constants.h
+entity.o: entity.cpp other.h entity.h includes.h game_object.h constants.h
 	$(CXX) -c "entity.cpp" -o "entity.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
 
-player.o: player.cpp player.h includes.h entity.h constants.h
-	$(CXX) -c "player.cpp" -o "player.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
-
-main.o: main.cpp player.h includes.h camera_controller.h entity.h world.h resource_manager.h constants.h
-	$(CXX) -c "main.cpp" -o "main.o" $(CXXFLAGS) 
-
-resource_manager.o: resource_manager.cpp includes.h resource_manager.h constants.h
+resource_manager.o: resource_manager.cpp resource_manager.h includes.h constants.h
 	$(CXX) -c "resource_manager.cpp" -o "resource_manager.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
-
-mob.o: mob.cpp
-	$(CXX) -c "mob.cpp" -o "mob.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
 
 camera_controller.o: camera_controller.cpp includes.h camera_controller.h constants.h
 	$(CXX) -c "camera_controller.cpp" -o "camera_controller.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
 
-game_object.o: game_object.cpp
+game_object.o: game_object.cpp other.h includes.h game_object.h constants.h
 	$(CXX) -c "game_object.cpp" -o "game_object.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
 
-world.o: world.cpp includes.h world.h constants.h
-	$(CXX) -c "world.cpp" -o "world.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
+mob.o: mob.cpp other.h entity.h includes.h game_object.h mob.h constants.h
+	$(CXX) -c "mob.cpp" -o "mob.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
+
+level.o: level.cpp level.h other.h includes.h constants.h
+	$(CXX) -c "level.cpp" -o "level.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
+
+main.o: main.cpp level.h other.h entity.h resource_manager.h includes.h camera_controller.h player.h scene.h game_object.h mob.h constants.h
+	$(CXX) -c "main.cpp" -o "main.o" $(CXXFLAGS) 
+
+scene.o: scene.cpp level.h other.h entity.h resource_manager.h includes.h camera_controller.h player.h scene.h game_object.h mob.h constants.h
+	$(CXX) -c "scene.cpp" -o "scene.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
+
+player.o: player.cpp other.h entity.h includes.h player.h game_object.h constants.h
+	$(CXX) -c "player.cpp" -o "player.o" $(CXXFLAGS)  -finput-charset=UTF-8 -fexec-charset=windows-1251
 
 source_private.res: source_private.rc 
 	$(WINDRES) -i "source_private.rc" --input-format=rc -o "source_private.res" -O coff $(WINDRESFLAGS) 

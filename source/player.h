@@ -14,7 +14,7 @@ public:
 			float animationSpeed = 0.20f );
 	virtual ~Player();
 	
-	Vector2 isCollision(Vector2 position, float radius) override;
+	void isCollision(Entity* entity) override;
 	
 	void management();
 	void update(float deltaTime) override;

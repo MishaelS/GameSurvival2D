@@ -6,7 +6,7 @@ EntityValues PlayerValues = {
 	 WorldHeight * (TileSize * TileScale) / 2.f},
 	"playerSpriteSheet",
 	32, 32,
-	86.f,
+	186.f,
 	0.20f
 };
 
@@ -31,8 +31,8 @@ MobValues ChichenValues = {
 CameraValues CValues = {
 	{WorldWidth  * (TileSize * TileScale) / 2.f,
 	 WorldHeight * (TileSize * TileScale) / 2.f},
-	{ScreenWidth / 2.f,
-	ScreenHeight / 2.f},
+	{ScreenWidth  / 2.f,
+	 ScreenHeight / 2.f},
 	64.f,
 	16.f
 };
@@ -42,9 +42,8 @@ Scene::Scene()
 	// Загрузка конфигурация
 	this->resourceManager.loadConfig("config.json");
 	
-	// Создание мира
-//	this->world = new World(worldW, worldH, tileSize);
-//	this->world->generate();
+	this->level = new Level(64, 64, 16);
+	this->level->generate();
 	
 	// Создаем игрока
 	this->player = new Player(
@@ -65,10 +64,11 @@ Scene::Scene()
 	);
 	
 	this->addEntity(this->player);
+	this->cameraController->setZoom(0.5f);
 }
 
 Scene::~Scene() {
-	delete this->world;
+	delete this->level;
 	delete this->player;
 	delete this->cameraController;
 	
@@ -101,11 +101,9 @@ void Scene::removeEntity(Entity* entity) { // Метод для удаления
 	}
 }
 
-void Scene::checkCollisionEntity(const std::vector<Entity*>& entities) {
+void Scene::collisionEntity(Entity* entity) {
 	// Пока не работает
-	for (Entity* entity : entities) {
-	 	entity->setPosition(this->player->isCollision(entity->getPosition(), entity->getRadius()));
-	}
+	this->player->isCollision(entity);
 }
 
 bool Scene::isEntityVisible(Entity* entity, const Camera2D& camera) {
@@ -161,7 +159,8 @@ void Scene::update(float deltaTime) {  // Обновление сцены
 	
 	// Обновляем все сущности
 	for (Entity* entity : this->entities) {
-		if (isEntityVisible(entity, this->cameraController->getCamera())) {
+		if (this->isEntityVisible(entity, this->cameraController->getCamera())) {
+			this->collisionEntity(entity);
 			entity->update(deltaTime);	
 		}
 	}
@@ -179,7 +178,7 @@ void Scene::render() { // Отрисовка сцены
 	
 	BeginMode2D(cameraController->getCamera());
 		// Отрисовываем мир
-//		this->world->render(this->cameraController->getCamera());
+		this->level->render();
 		
 		// Отрисовываем все сущности
 		for (Entity* entity : this->entities) {
@@ -188,6 +187,7 @@ void Scene::render() { // Отрисовка сцены
 			}
 		}
 		
+		// ... Сетка карты ... //
 		for (int x = 0; x < WorldWidth * (TileSize * TileScale); x += (TileSize * TileScale)) {
 			DrawLine(x, 0, x, WorldWidth * (TileSize * TileScale), {255, 255, 255, 64});
 		}

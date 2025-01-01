@@ -1,11 +1,10 @@
-// #include "includes.h"
 #include "other.h"
 
 #include "camera_controller.h"
 #include "resource_manager.h"
 #include "entity.h"
 #include "player.h"
-#include "world.h"
+#include "level.h"
 #include "mob.h"
 
 #ifndef SCENE_H
@@ -22,7 +21,7 @@ public:
 
 private:
 	// Методы для управления сущностями
-	void checkCollisionEntity(const std::vector<Entity*>& entities); // Обработка столкновение
+	void collisionEntity(Entity* entity); // Обработка столкновение
 	
 	bool isEntityVisible(Entity* entity, const Camera2D& camera);
 	
@@ -30,7 +29,7 @@ private:
 	void addEntity(Entity* entity);	 	// Добавление сущности
 	void removeEntity(Entity* entity);	// Удаление сущности
 	
-	World*  world;	// Ландшафт
+	Level* level;   // Генерация уровня
 	Player* player;	// Игрок
 	CameraController* cameraController; // Контроллер камеры
 	

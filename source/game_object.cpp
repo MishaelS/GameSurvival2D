@@ -15,8 +15,8 @@ GameObject::~GameObject() {
 	// Деструктор
 }
 
-float GameObject::getRadius(float ratio) const {
-	return (float)(this->frameRect.width + this->frameRect.height) / (this->scale * ratio);
+float GameObject::getRadius() const {
+	return (this->frameRect.width / 2.f) / 2.f;
 }
 
 Vector2 GameObject::getPosition() const {
@@ -50,8 +50,8 @@ void GameObject::render() {
 		 this->frameRect.y,
 		 (float)this->frameRect.width,
 		 (float)this->frameRect.height},
-		{this->position.x - this->frameRect.width,
-		 this->position.y - this->frameRect.height,
+		{this->position.x - (this->frameRect.width  / 2.f),
+		 this->position.y - (this->frameRect.height / 2.f),
 		 this->frameRect.width  * this->scale,
 		 this->frameRect.height * this->scale},
 		{0.f, 0.f},

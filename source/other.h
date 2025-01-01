@@ -5,12 +5,12 @@
 
 // Перечисление типо тайлов для растоновки мира
 enum TileType {
-	TILE_EMPTY,	// Пустой тайл
-	TILE_GRASS,	// Трава
-	TILE_SAND,	// Песок
-	TILE_WATER,	// Вода
+	TILE_EMPTY, // Пустоа
+	TILE_WATER, // Вода
+	TILE_SAND,  // Песок
+	TILE_GRASS, // Трава
 	TILE_TREE,	// Дерево
-	TILE_ROCK	// Камень
+	TILE_STONE  // Камень
 };
 
 struct Chunk {

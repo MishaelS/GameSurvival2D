@@ -12,7 +12,7 @@ public:
 				float movementSpeed = 86.f );
 	virtual ~GameObject();
 	
-	virtual float getRadius(float ratio = 2.5f) const;
+	virtual float getRadius() const;
 	
 	virtual Vector2 getPosition() const;
 	virtual Vector2 getVelocity() const;

@@ -21,8 +21,8 @@ void Player::updateMovement(float deltaTime) {
 	Entity::updateMovement(deltaTime);
 }
 
-Vector2 Player::isCollision(Vector2 position, float radius) {
-	return Entity::isCollision(position, radius);
+void Player::isCollision(Entity* entity) {
+	Entity::isCollision(entity);
 }
 
 void Player::management() {

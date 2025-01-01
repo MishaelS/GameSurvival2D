@@ -1,26 +1,45 @@
 [
     {
-        "caretX": 1,
-        "caretY": 103,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/scene.cpp",
+        "caretX": 51,
+        "caretY": 12,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/level.h",
         "focused": false,
         "isOpen": true,
         "left": 0,
-        "order": 2,
-        "top": 3160
-    },
-    {
-        "caretX": 1,
-        "caretY": 15,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/mob.cpp",
-        "focused": false,
-        "isOpen": false,
-        "left": 0,
+        "order": 5,
         "top": 0
     },
     {
         "caretX": 2,
-        "caretY": 16,
+        "caretY": 86,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/entity.cpp",
+        "focused": false,
+        "isOpen": false,
+        "left": 0,
+        "top": 1235
+    },
+    {
+        "caretX": 23,
+        "caretY": 20,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/resource_manager.cpp",
+        "focused": false,
+        "isOpen": false,
+        "left": 0,
+        "top": 153
+    },
+    {
+        "caretX": 23,
+        "caretY": 8,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/other.h",
+        "focused": false,
+        "isOpen": true,
+        "left": 0,
+        "order": 2,
+        "top": 0
+    },
+    {
+        "caretX": 2,
+        "caretY": 19,
         "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/entity.h",
         "focused": false,
         "isOpen": false,
@@ -28,9 +47,18 @@
         "top": 0
     },
     {
-        "caretX": 27,
-        "caretY": 9,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/game_object.h",
+        "caretX": 3,
+        "caretY": 44,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/camera_controller.cpp",
+        "focused": false,
+        "isOpen": false,
+        "left": 0,
+        "top": 340
+    },
+    {
+        "caretX": 2,
+        "caretY": 10,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/resource_manager.h",
         "focused": false,
         "isOpen": false,
         "left": 0,
@@ -41,63 +69,9 @@
         "caretY": 6,
         "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/includes.h",
         "focused": false,
-        "isOpen": false,
-        "left": 0,
-        "top": 0
-    },
-    {
-        "caretX": 13,
-        "caretY": 9,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/main.cpp",
-        "focused": false,
-        "isOpen": false,
-        "left": 0,
-        "top": 0
-    },
-    {
-        "caretX": 16,
-        "caretY": 10,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/game_object.cpp",
-        "focused": false,
-        "isOpen": false,
-        "left": 0,
-        "top": 180
-    },
-    {
-        "caretX": 23,
-        "caretY": 5,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/constants.h",
-        "focused": false,
-        "isOpen": false,
-        "left": 0,
-        "top": 0
-    },
-    {
-        "caretX": 35,
-        "caretY": 14,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/mob.h",
-        "focused": false,
-        "isOpen": false,
-        "left": 0,
-        "top": 0
-    },
-    {
-        "caretX": 44,
-        "caretY": 29,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/camera_controller.cpp",
-        "focused": false,
-        "isOpen": false,
-        "left": 0,
-        "top": 0
-    },
-    {
-        "caretX": 1,
-        "caretY": 28,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/scene.h",
-        "focused": false,
         "isOpen": true,
         "left": 0,
-        "order": 1,
+        "order": 0,
         "top": 0
     },
     {
@@ -110,36 +84,17 @@
         "top": 51
     },
     {
-        "caretX": 15,
-        "caretY": 17,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/other.h",
-        "focused": true,
-        "isOpen": true,
+        "caretX": 40,
+        "caretY": 19,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/game_object.cpp",
+        "focused": false,
+        "isOpen": false,
         "left": 0,
-        "order": 0,
         "top": 0
     },
     {
-        "caretX": 23,
-        "caretY": 20,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/resource_manager.cpp",
-        "focused": false,
-        "isOpen": false,
-        "left": 0,
-        "top": 153
-    },
-    {
-        "caretX": 1,
-        "caretY": 15,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/entity.cpp",
-        "focused": false,
-        "isOpen": false,
-        "left": 0,
-        "top": 460
-    },
-    {
-        "caretX": 2,
-        "caretY": 16,
+        "caretX": 26,
+        "caretY": 17,
         "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/player.h",
         "focused": false,
         "isOpen": false,
@@ -147,27 +102,38 @@
         "top": 0
     },
     {
-        "caretX": 37,
-        "caretY": 29,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/player.cpp",
+        "caretX": 31,
+        "caretY": 12,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/mob.cpp",
         "focused": false,
         "isOpen": false,
         "left": 0,
-        "top": 140
+        "top": 714
     },
     {
-        "caretX": 4,
-        "caretY": 105,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/world.cpp",
+        "caretX": 1,
+        "caretY": 1,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/scene.h",
         "focused": false,
-        "isOpen": false,
+        "isOpen": true,
         "left": 0,
-        "top": 1540
+        "order": 3,
+        "top": 0
     },
     {
-        "caretX": 11,
+        "caretX": 3,
+        "caretY": 4,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/level.cpp",
+        "focused": false,
+        "isOpen": true,
+        "left": 0,
+        "order": 6,
+        "top": 0
+    },
+    {
+        "caretX": 13,
         "caretY": 9,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/world.h",
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/main.cpp",
         "focused": false,
         "isOpen": false,
         "left": 0,
@@ -175,11 +141,50 @@
     },
     {
         "caretX": 2,
-        "caretY": 10,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/resource_manager.h",
+        "caretY": 14,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/game_object.h",
         "focused": false,
         "isOpen": false,
         "left": 0,
+        "top": 0
+    },
+    {
+        "caretX": 22,
+        "caretY": 17,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/mob.h",
+        "focused": false,
+        "isOpen": false,
+        "left": 0,
+        "top": 0
+    },
+    {
+        "caretX": 29,
+        "caretY": 6,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/constants.h",
+        "focused": false,
+        "isOpen": true,
+        "left": 0,
+        "order": 1,
+        "top": 0
+    },
+    {
+        "caretX": 2,
+        "caretY": 160,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/scene.cpp",
+        "focused": false,
+        "isOpen": true,
+        "left": 0,
+        "order": 4,
+        "top": 2850
+    },
+    {
+        "caretX": 43,
+        "caretY": 24,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/player.cpp",
+        "focused": true,
+        "isOpen": true,
+        "left": 0,
+        "order": 7,
         "top": 0
     }
 ]

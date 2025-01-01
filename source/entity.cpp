@@ -13,8 +13,12 @@ Entity::~Entity() {
 	// Деструктор
 }
 
-float Entity::getRadius(float ratio) const {
-	return GameObject::getRadius(ratio);
+float Entity::getRadius() const {
+	return GameObject::getRadius();
+}
+
+float Entity::getRadiusHitbox(float ratio) const {
+	return GameObject::getRadius() / ratio;
 }
 
 Vector2 Entity::getPosition() const {
@@ -40,21 +44,27 @@ void Entity::setDirection(Vector2 direction) {
 	GameObject::setDirection(direction);
 }
 
-Vector2 Entity::isCollision(Vector2 position, float radius) {
-	float distance = Vector2DistanceSqr(this->getPosition(), position);
-	if (distance < (this->getRadius() + radius)) {
-		// Корректировка позиций
-		Vector2 delta = {this->getPosition().x - position.x, this->getPosition().y - position.y};
-		float overlap = (this->getRadius() + radius) - distance;
+void Entity::isCollision(Entity* entity) {
+	float distance = Vector2Distance(this->getPosition(), entity->getPosition()); // Вычисляем расстояние между центрами сущностей
+	float radiusSum = this->getRadiusHitbox(2.f) + entity->getRadiusHitbox(2.f);  // Вычисляем сумму радиусов
+
+	// Если расстояние меньше суммы радиусов, происходит столкновение
+	if (distance <= radiusSum) {
+		Vector2 normal = Vector2Normalize(Vector2Subtract(this->getPosition(), entity->getPosition())); // Вычисляем вектор нормали от одной сущности к другой
+		float penetrationDepth = radiusSum - distance; // Глубина проникновения (насколько одна сущность "вошла" в другую)
 		
-		Vector2 correction = {delta.x / distance * overlap / 2, delta.y / distance * overlap / 2};
+		// Не дает двигаться той сущности которая производит на него действие //
+		// .. хорошая механимка но не то .. //
+		// Сдвигаем текущую сущность на безопасное расстояние
+		// this->setPosition(Vector2Add(this->getPosition(), Vector2Scale(normal, penetrationDepth)));
 		
-		this->colorHitbox = {255,   0,   0, 45};
-		return {this->getPosition().x - correction.x, this->getPosition().y - correction.y};
+		
+		// Реализация двежение сущности которая производит действие //
+		// .. эта реализация больше подходит проекту .. //
+		// Сдвигаем обе сущности на половину глубины проникновения
+		this->setPosition(Vector2Add(this->getPosition(), Vector2Scale(normal, penetrationDepth * 0.5f)));
+		entity->setPosition(Vector2Subtract(entity->getPosition(), Vector2Scale(normal, penetrationDepth * 0.5f)));
 	}
-	
-	this->colorHitbox = {255, 255, 255, 45};
-	return this->getPosition();
 }
 
 void Entity::updateState() {
@@ -115,7 +125,9 @@ void Entity::render() {
 		this->getPosition(),
 		this->getRadius(),
 		this->colorHitbox
-	);
+		);
 	
 	GameObject::render();
+	
+	DrawCircleV(this->getPosition(), 1.f, RED);
 }
