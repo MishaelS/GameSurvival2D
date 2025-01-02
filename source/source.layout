@@ -1,12 +1,12 @@
 [
     {
-        "caretX": 51,
-        "caretY": 12,
+        "caretX": 38,
+        "caretY": 11,
         "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/level.h",
         "focused": false,
         "isOpen": true,
         "left": 0,
-        "order": 5,
+        "order": 6,
         "top": 0
     },
     {
@@ -65,8 +65,8 @@
         "top": 0
     },
     {
-        "caretX": 21,
-        "caretY": 6,
+        "caretX": 16,
+        "caretY": 4,
         "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/includes.h",
         "focused": false,
         "isOpen": true,
@@ -111,32 +111,33 @@
         "top": 714
     },
     {
-        "caretX": 1,
-        "caretY": 1,
+        "caretX": 2,
+        "caretY": 27,
         "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/scene.h",
         "focused": false,
         "isOpen": true,
         "left": 0,
-        "order": 3,
+        "order": 4,
+        "top": 192
+    },
+    {
+        "caretX": 67,
+        "caretY": 95,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/level.cpp",
+        "focused": true,
+        "isOpen": true,
+        "left": 0,
+        "order": 7,
         "top": 0
     },
     {
-        "caretX": 3,
-        "caretY": 4,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/level.cpp",
+        "caretX": 26,
+        "caretY": 16,
+        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/main.cpp",
         "focused": false,
         "isOpen": true,
         "left": 0,
-        "order": 6,
-        "top": 0
-    },
-    {
-        "caretX": 13,
-        "caretY": 9,
-        "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/main.cpp",
-        "focused": false,
-        "isOpen": false,
-        "left": 0,
+        "order": 3,
         "top": 0
     },
     {
@@ -168,23 +169,22 @@
         "top": 0
     },
     {
-        "caretX": 2,
-        "caretY": 160,
+        "caretX": 37,
+        "caretY": 67,
         "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/scene.cpp",
         "focused": false,
         "isOpen": true,
         "left": 0,
-        "order": 4,
-        "top": 2850
+        "order": 5,
+        "top": 2624
     },
     {
         "caretX": 43,
         "caretY": 24,
         "filename": "C:/Dev/projectsRedPandaCpp/GameSurvival2D/source/player.cpp",
-        "focused": true,
-        "isOpen": true,
+        "focused": false,
+        "isOpen": false,
         "left": 0,
-        "order": 7,
         "top": 0
     }
 ]

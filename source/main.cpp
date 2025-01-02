@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
 		scene.update(GetFrameTime());
 		
 		BeginDrawing();
-			ClearBackground({0, 149, 182, 255});
+			ClearBackground({  0, 149, 182, 255});
 			scene.render();
 			DrawText(TextFormat("FPS: %d", GetFPS()), 10, 10, 20, WHITE);
 		EndDrawing();

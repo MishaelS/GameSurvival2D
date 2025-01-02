@@ -6,7 +6,7 @@ EntityValues PlayerValues = {
 	 WorldHeight * (TileSize * TileScale) / 2.f},
 	"playerSpriteSheet",
 	32, 32,
-	186.f,
+	286.f,
 	0.20f
 };
 
@@ -42,7 +42,7 @@ Scene::Scene()
 	// Загрузка конфигурация
 	this->resourceManager.loadConfig("config.json");
 	
-	this->level = new Level(64, 64, 16);
+	this->level = new Level(256, 256, 16);
 	this->level->generate();
 	
 	// Создаем игрока
@@ -188,12 +188,12 @@ void Scene::render() { // Отрисовка сцены
 		}
 		
 		// ... Сетка карты ... //
-		for (int x = 0; x < WorldWidth * (TileSize * TileScale); x += (TileSize * TileScale)) {
-			DrawLine(x, 0, x, WorldWidth * (TileSize * TileScale), {255, 255, 255, 64});
-		}
-		for (int y = 0; y < WorldHeight * (TileSize * TileScale); y += (TileSize * TileScale)) {
-			DrawLine(0, y, WorldHeight * (TileSize * TileScale), y, {255, 255, 255, 64});
-		}
+		// for (int x = 0; x < WorldWidth * (TileSize * TileScale); x += (TileSize * TileScale)) {
+		// 	DrawLine(x, 0, x, WorldWidth * (TileSize * TileScale), {255, 255, 255, 64});
+		// }
+		// for (int y = 0; y < WorldHeight * (TileSize * TileScale); y += (TileSize * TileScale)) {
+		// 	DrawLine(0, y, WorldHeight * (TileSize * TileScale), y, {255, 255, 255, 64});
+		// }
 		
 		DrawCircleV(cameraController->getCamera().target, 2.f, RED);
 	EndMode2D();
